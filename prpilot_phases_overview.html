@@ -1,0 +1,309 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+.wrap{font-family:var(--font-sans);color:var(--color-text-primary);padding:8px 0}
+.phase{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);margin-bottom:10px;overflow:hidden}
+.phase-head{display:flex;align-items:center;gap:12px;padding:14px 16px;cursor:pointer}
+.phase-head:hover{background:var(--color-background-secondary)}
+.phase-num{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;flex-shrink:0}
+.phase-meta{flex:1}
+.phase-title{font-size:14px;font-weight:500;margin-bottom:2px}
+.phase-sub{font-size:12px;color:var(--color-text-secondary)}
+.phase-time{font-size:11px;color:var(--color-text-tertiary);white-space:nowrap}
+.chev{font-size:14px;color:var(--color-text-tertiary);transition:transform .2s}
+.chev.open{transform:rotate(90deg)}
+.phase-body{border-top:0.5px solid var(--color-border-tertiary);padding:14px 16px;display:none}
+.section-label{font-size:10px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--color-text-tertiary);margin-bottom:8px;margin-top:14px}
+.section-label:first-child{margin-top:0}
+.tools-row{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:4px}
+.tool-chip{font-size:12px;padding:3px 10px;border-radius:20px;font-weight:500}
+.steps-list{list-style:none;display:flex;flex-direction:column;gap:4px}
+.steps-list li{font-size:13px;color:var(--color-text-secondary);padding:5px 0;display:flex;gap:8px;align-items:flex-start;border-bottom:0.5px solid var(--color-border-tertiary);line-height:1.4}
+.steps-list li:last-child{border-bottom:none}
+.steps-list li .dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;margin-top:5px}
+.snapshot{background:var(--color-background-tertiary);border:0.5px solid var(--color-border-tertiary);border-radius:8px;padding:12px 14px;font-family:var(--font-mono);font-size:12px;line-height:1.7;color:var(--color-text-primary)}
+.snapshot .dim{color:var(--color-text-tertiary)}
+.snapshot .green{color:#1D9E75}
+.snapshot .blue{color:#185FA5}
+.snapshot .yellow{color:#854F0B}
+.snapshot .red{color:#993C1D}
+.outcome{background:var(--color-background-secondary);border-radius:8px;padding:10px 14px;font-size:13px;color:var(--color-text-primary);line-height:1.5;margin-top:4px}
+.outcome strong{color:#1D9E75}
+.start-btn{display:inline-block;margin-top:10px;font-size:12px;color:var(--color-text-info);cursor:pointer;text-decoration:underline;text-underline-offset:2px}
+.hero{background:var(--color-background-secondary);border-radius:var(--border-radius-lg);padding:12px 16px;margin-bottom:16px;display:flex;align-items:center;gap:12px}
+.hero-txt h2{font-size:15px;font-weight:500;margin-bottom:2px}
+.hero-txt p{font-size:12px;color:var(--color-text-secondary);line-height:1.5}
+.timeline{display:flex;gap:0;margin-bottom:16px;background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);overflow:hidden}
+.tl-item{flex:1;padding:10px 6px;text-align:center;border-right:0.5px solid var(--color-border-tertiary);cursor:pointer;transition:background .15s}
+.tl-item:last-child{border-right:none}
+.tl-item:hover{background:var(--color-background-secondary)}
+.tl-dot{width:8px;height:8px;border-radius:50%;margin:0 auto 5px}
+.tl-num{font-size:10px;font-weight:500;color:var(--color-text-tertiary);margin-bottom:2px}
+.tl-lbl{font-size:10px;color:var(--color-text-secondary);line-height:1.3}
+.done-badge{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:500;padding:2px 8px;border-radius:20px;background:#1D9E7520;color:#1D9E75;margin-left:8px}
+</style>
+
+<div class="wrap">
+  <div class="hero">
+    <div style="width:36px;height:36px;border-radius:10px;background:#534AB720;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:20px">🤖</div>
+    <div class="hero-txt">
+      <h2>PRPilot — Full Project Roadmap</h2>
+      <p>6 phases · ~11 days · From empty folder to live AI bot on GitHub</p>
+    </div>
+  </div>
+
+  <div class="timeline">
+    <div class="tl-item" onclick="openPhase(0)"><div class="tl-dot" style="background:#1D9E75"></div><div class="tl-num">P1</div><div class="tl-lbl">Skeleton</div></div>
+    <div class="tl-item" onclick="openPhase(1)"><div class="tl-dot" style="background:#534AB7"></div><div class="tl-num">P2</div><div class="tl-lbl">Webhook</div></div>
+    <div class="tl-item" onclick="openPhase(2)"><div class="tl-dot" style="background:#993C1D"></div><div class="tl-num">P3</div><div class="tl-lbl">AI Review</div></div>
+    <div class="tl-item" onclick="openPhase(3)"><div class="tl-dot" style="background:#185FA5"></div><div class="tl-num">P4</div><div class="tl-lbl">Comments</div></div>
+    <div class="tl-item" onclick="openPhase(4)"><div class="tl-dot" style="background:#854F0B"></div><div class="tl-num">P5</div><div class="tl-lbl">CI/CD</div></div>
+    <div class="tl-item" onclick="openPhase(5)"><div class="tl-dot" style="background:#5F5E5A"></div><div class="tl-num">P6</div><div class="tl-lbl">Deploy</div></div>
+  </div>
+
+  <div id="phases"></div>
+</div>
+
+<script>
+const phases=[
+  {
+    color:"#1D9E75",
+    num:"P1",
+    title:"Project Skeleton & Git",
+    sub:"Environment · folder structure · first GitHub push",
+    time:"Done ✓",
+    done:true,
+    tools:[
+      {name:"Git",c:"#1D9E75"},{name:"GitHub",c:"#1D9E75"},{name:"Python venv",c:"#1D9E75"},{name:"VS Code",c:"#1D9E75"}
+    ],
+    steps:[
+      "Install and verify Git, Python, Node",
+      "Create prpilot/ folder and git init",
+      "Set up Python virtual environment",
+      "Create requirements.txt and install all packages",
+      "Create .gitignore and .env for secrets",
+      "Create app/ and tests/ folder structure",
+      "First commit and push to GitHub"
+    ],
+    snapshot:`<span class="green">✓</span> prpilot/
+├── app/
+│   ├── main.py         <span class="dim"># empty for now</span>
+│   ├── reviewer.py     <span class="dim"># empty for now</span>
+│   └── github_helper.py
+├── tests/
+├── .env                <span class="dim"># your secrets</span>
+├── .gitignore
+└── requirements.txt`,
+    outcome:"<strong>What it looks like:</strong> An empty project on GitHub. No functionality yet — but the foundation is solid and professional."
+  },
+  {
+    color:"#534AB7",
+    num:"P2",
+    title:"Webhook Server",
+    sub:"FastAPI · ngrok · receive GitHub events live",
+    time:"~2 days",
+    done:false,
+    tools:[
+      {name:"FastAPI",c:"#534AB7"},{name:"uvicorn",c:"#534AB7"},{name:"ngrok",c:"#534AB7"},{name:"GitHub Webhooks",c:"#534AB7"}
+    ],
+    steps:[
+      "Write main.py — a FastAPI server with a /webhook endpoint",
+      "Verify the webhook signature (security — GitHub sends a secret)",
+      "Parse the PR event payload to get PR number, repo, and diff URL",
+      "Install and run ngrok to expose your laptop to the internet",
+      "Register your ngrok URL as a webhook on your GitHub repo",
+      "Open a test PR and watch your terminal receive the event live"
+    ],
+    snapshot:`<span class="blue">POST /webhook</span> called!
+{
+  "action": "opened",
+  "number": <span class="green">42</span>,
+  "pull_request": {
+    "title": <span class="yellow">"Add login feature"</span>,
+    "user": { "login": <span class="yellow">"nitya"</span> },
+    "diff_url": <span class="yellow">"https://github.com/..."</span>
+  }
+}`,
+    outcome:"<strong>What it looks like:</strong> You open a PR on GitHub and your terminal instantly prints the event data. The bot is listening — it just can't review yet."
+  },
+  {
+    color:"#993C1D",
+    num:"P3",
+    title:"AI Review Engine",
+    sub:"GPT-4o-mini · fetch diff · structured review",
+    time:"~3 days",
+    done:false,
+    tools:[
+      {name:"OpenAI GPT-4o-mini",c:"#993C1D"},{name:"LangChain",c:"#993C1D"},{name:"PyGithub",c:"#993C1D"},{name:"tiktoken",c:"#993C1D"}
+    ],
+    steps:[
+      "Write github_helper.py — fetch the actual code diff from the PR",
+      "Truncate diff with tiktoken if it's too long for GPT's context window",
+      "Write reviewer.py — build the prompt: 'you are a senior engineer, review this diff'",
+      "Call GPT-4o-mini with the diff and get back a structured review",
+      "Parse the response into sections: bugs, suggestions, style issues",
+      "Test the review engine from the terminal with a sample diff"
+    ],
+    snapshot:`<span class="green">Review generated:</span>
+
+<span class="red">🔴 Bug found:</span> No null check on line 23
+   user.name could throw if user is undefined
+
+<span class="yellow">🟡 Suggestion:</span> Extract this logic into a helper
+   function for better readability
+
+<span class="green">🟢 Style:</span> Good use of async/await
+   Consistent naming conventions`,
+    outcome:"<strong>What it looks like:</strong> You paste a code diff into the terminal and GPT returns a real, structured code review. The AI brain is working."
+  },
+  {
+    color:"#185FA5",
+    num:"P4",
+    title:"Post Comments to PR",
+    sub:"PyGithub · format review · bot posts on GitHub",
+    time:"~2 days",
+    done:false,
+    tools:[
+      {name:"PyGithub",c:"#185FA5"},{name:"GitHub API",c:"#185FA5"},{name:"Markdown",c:"#185FA5"}
+    ],
+    steps:[
+      "Connect ingestion pipeline — webhook triggers the full review flow",
+      "Use PyGithub to authenticate with your GitHub token",
+      "Format the GPT review as a clean Markdown comment",
+      "Post the review comment to the PR via GitHub API",
+      "Add a summary header: files changed, issues found, overall verdict",
+      "Test end to end: open a PR, watch the bot comment automatically"
+    ],
+    snapshot:`<span class="dim">github-actions bot commented 10 seconds ago</span>
+
+<span class="blue">## 🤖 PRPilot Review</span>
+
+<span class="red">### 🔴 Issues Found (2)</span>
+- No null check on \`user.name\` — line 23
+- Missing error handling in fetch call
+
+<span class="yellow">### 🟡 Suggestions (1)</span>  
+- Extract login logic into helper function
+
+<span class="green">### ✅ Looks Good</span>
+- Consistent naming, good async usage`,
+    outcome:"<strong>What it looks like:</strong> You open a pull request and within 10 seconds a bot appears in the comments with a full structured review. This is the wow moment."
+  },
+  {
+    color:"#854F0B",
+    num:"P5",
+    title:"GitHub Actions CI/CD",
+    sub:"YAML workflow · auto-trigger · runs in the cloud",
+    time:"~2 days",
+    done:false,
+    tools:[
+      {name:"GitHub Actions",c:"#854F0B"},{name:"YAML",c:"#854F0B"},{name:"GitHub Secrets",c:"#854F0B"}
+    ],
+    steps:[
+      "Create .github/workflows/review.yml workflow file",
+      "Trigger the workflow on pull_request events automatically",
+      "Store OPENAI_API_KEY and GITHUB_TOKEN in GitHub Secrets",
+      "Run the reviewer as a GitHub Action — no server needed for this mode",
+      "Test: open a PR, watch the Actions tab run, see the comment appear",
+      "Add a status badge to your README showing the workflow passing"
+    ],
+    snapshot:`<span class="dim"># .github/workflows/review.yml</span>
+<span class="blue">on:</span>
+  pull_request:
+    types: [opened, synchronize]
+
+<span class="blue">jobs:</span>
+  review:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: <span class="yellow">Run PRPilot</span>
+        run: python app/main.py
+        env:
+          OPENAI_API_KEY: <span class="green">\${{ secrets.OPENAI_API_KEY }}</span>`,
+    outcome:"<strong>What it looks like:</strong> No server needed. Every PR anywhere in your repo triggers the bot automatically via GitHub Actions. Fully automated."
+  },
+  {
+    color:"#5F5E5A",
+    num:"P6",
+    title:"Deploy & Polish",
+    sub:"Railway · README · portfolio ready",
+    time:"~2 days",
+    done:false,
+    tools:[
+      {name:"Railway",c:"#5F5E5A"},{name:"pytest",c:"#5F5E5A"},{name:"Markdown",c:"#5F5E5A"}
+    ],
+    steps:[
+      "Deploy FastAPI server to Railway — connect GitHub repo, set env vars",
+      "Update webhook URL from ngrok to your live Railway URL",
+      "Write tests in tests/test_reviewer.py using pytest",
+      "Write a full README with demo GIF, setup instructions, features",
+      "Add source citation feature — show exactly which line the issue is on",
+      "Record a demo GIF of the bot reviewing a real PR"
+    ],
+    snapshot:`<span class="green">PRPilot</span> is live at:
+https://prpilot-production.up.railway.app
+
+<span class="blue">README includes:</span>
+- Demo GIF of bot reviewing a PR
+- Setup instructions
+- Features list
+- Tech stack badge row
+
+<span class="green">Resume line:</span>
+Built PRPilot — AI GitHub bot using
+GPT-4o, FastAPI, PyGithub, deployed
+on Railway with GitHub Actions CI/CD`,
+    outcome:"<strong>What it looks like:</strong> A fully deployed, live AI bot with a polished README, tests, and a demo GIF. Portfolio-ready and ready to show in interviews."
+  }
+];
+
+function openPhase(i){
+  const body=document.getElementById('pb-'+i);
+  const chev=document.getElementById('pc-'+i);
+  const isOpen=body.style.display==='block';
+  // close all
+  phases.forEach((_,j)=>{
+    document.getElementById('pb-'+j).style.display='none';
+    document.getElementById('pc-'+j).classList.remove('open');
+  });
+  if(!isOpen){
+    body.style.display='block';
+    chev.classList.add('open');
+  }
+}
+
+const container=document.getElementById('phases');
+phases.forEach((p,i)=>{
+  const div=document.createElement('div');
+  div.className='phase';
+
+  div.innerHTML=`
+    <div class="phase-head" onclick="openPhase(${i})">
+      <div class="phase-num" style="background:${p.color}20;color:${p.color}">${p.num}</div>
+      <div class="phase-meta">
+        <div class="phase-title">${p.title}${p.done?'<span class="done-badge">✓ Done</span>':''}</div>
+        <div class="phase-sub">${p.sub}</div>
+      </div>
+      <div class="phase-time" style="color:${p.done?'#1D9E75':'var(--color-text-tertiary)'}">${p.time}</div>
+      <div class="chev" id="pc-${i}">›</div>
+    </div>
+    <div class="phase-body" id="pb-${i}">
+      <div class="section-label">Tools you will use</div>
+      <div class="tools-row">${p.tools.map(t=>`<span class="tool-chip" style="background:${t.c}20;color:${t.c}">${t.name}</span>`).join('')}</div>
+      <div class="section-label">What you will do</div>
+      <ul class="steps-list">${p.steps.map(s=>`<li><span class="dot" style="background:${p.color}"></span><span>${s}</span></li>`).join('')}</ul>
+      <div class="section-label">What your terminal / project looks like at this point</div>
+      <div class="snapshot">${p.snapshot}</div>
+      <div class="section-label">Outcome</div>
+      <div class="outcome">${p.outcome}</div>
+      ${!p.done?`<span class="start-btn" onclick="sendPrompt('Lets start Phase ${i+1} of PRPilot')">Start Phase ${i+1} →</span>`:''}
+    </div>
+  `;
+  container.appendChild(div);
+});
+
+// open first incomplete phase
+const firstOpen=phases.findIndex(p=>!p.done);
+if(firstOpen>=0) openPhase(firstOpen);
+</script>
