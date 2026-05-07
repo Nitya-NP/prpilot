@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+python-dotenv
+PyGithub
+openai
+langchain
+langchain-openai
+tiktoken
+pytest
+httpx
