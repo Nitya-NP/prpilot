@@ -53,13 +53,27 @@ async def webhook(request: Request):
         repo_name = data["repository"]["full_name"]
 
         print(f"\n{'='*50}")
-        print(f"🔔 PR Event received!")
-        print(f"   Repo:   {repo_name}")
-        print(f"   PR #:   {pr_number}")
-        print(f"   Title:  {pr_title}")
-        print(f"   Action: {action}")
+        print(f" PR Event received!")
+        print(f" Repo:   {repo_name}")
+        print(f" PR #:   {pr_number}")
+        print(f" Title:  {pr_title}")
+        print(f" Action: {action}")
         print(f"{'='*50}\n")
 
-        return {"status": "received", "pr": pr_number}
+        # Only review when PR is opened or new code is pushed
+        if action in ["opened", "synchronize"]:
+            from app.github_helper import get_pr_diff, post_review_comment
+            from app.reviewer import review_code
 
-    return {"status": "ignored", "event": event}
+            print("📥 Fetching diff...")
+            diff = get_pr_diff(repo_name, pr_number)
+
+            print("🤖 Reviewing code...")
+            review = review_code(diff)
+
+            print("💬 Posting comment to PR...")
+            post_review_comment(repo_name, pr_number, review)
+
+            print("✅ Done!")
+
+    return {"status": "received", "pr": pr_number}
