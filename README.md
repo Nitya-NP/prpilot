@@ -9,16 +9,16 @@
 
 ![PRPilot Demo](demo.gif)
 
-## ✨ Features
+## Features
 
-- 🔍 **Automatic code review** on every PR opened
-- 🐛 **Bug detection** — spots common errors and issues
-- 💡 **Suggestions** — best practices and improvements
-- ✅ **Positives** — highlights what was done well
-- ⚡ **Fast** — review posted in under 10 seconds
-- 🔄 **CI/CD** — runs via GitHub Actions automatically
+- **Automatic code review** on every PR opened
+- **Bug detection** — spots common errors and issues
+- **Suggestions** — best practices and improvements
+- **Positives** — highlights what was done well
+- **Fast** — review posted in under 10 seconds
+- **CI/CD** — runs via GitHub Actions automatically
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 | Layer | Technology |
 |---|---|
@@ -28,7 +28,7 @@
 | CI/CD | GitHub Actions |
 | Deployment | Render |
 
-## 🚀 How It Works
+## How It Works
 
 1. Developer opens a pull request
 2. GitHub sends webhook event to PRPilot server
@@ -36,7 +36,7 @@
 4. Diff sent to Llama3 for analysis
 5. Structured review posted as PR comment
 
-## 📋 Example Review
+## Example Review
 
 🤖 PRPilot Code Review
 Issues Found
@@ -53,7 +53,7 @@ Positives
 Summary
 - Well structured code with minor improvements needed.
 
-## ⚙️ Local Setup
+## Local Setup
 
 ```bash
 # Clone the repo
@@ -75,7 +75,7 @@ cp .env.example .env
 uvicorn app.main:app --reload --port 8000
 ```
 
-## 🔑 Environment Variables
+## Environment Variables
 
 GROQ_API_KEY=           # Free at console.groq.com
 GITHUB_TOKEN=           # GitHub personal access token
