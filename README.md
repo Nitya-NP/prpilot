@@ -77,9 +77,9 @@ uvicorn app.main:app --reload --port 8000
 
 ## Environment Variables
 
-GROQ_API_KEY=           # Free at console.groq.com
-GITHUB_TOKEN=           # GitHub personal access token
-GITHUB_WEBHOOK_SECRET=  # Random secret for webhook security
+- GROQ_API_KEY=           # Free at console.groq.com
+- GITHUB_TOKEN=           # GitHub personal access token
+- GITHUB_WEBHOOK_SECRET=  # Random secret for webhook security
 
 
 Built with by [Nitya Patel](https://github.com/Nitya-NP) - [LinkedIn](https://www.linkedin.com/in/nitya-patel-838072301/) | [Portfolio](https://nityapatel-portfolio.vercel.app/)
