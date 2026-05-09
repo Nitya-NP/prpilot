@@ -85,7 +85,7 @@ git commit -m "describe what you built"
 git push origin feature/your-feature-name
 ```
 
-# Step 3 — Open PR on GitHub
+Step 3 — Open PR on GitHub
 1. Go to github.com/Nitya-NP/prpilot
 2. Click "Compare & pull request"
 3. Click "Create pull request"
