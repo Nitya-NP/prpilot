@@ -88,12 +88,11 @@ git commit -m "describe what you built"
 git push origin feature/your-feature-name
 ```
 
-# Step 3 — Open a PR on GitHub
-# Go to github.com/Nitya-NP/prpilot
-# Click "Compare & pull request"
-# Click "Create pull request"
-# PRPilot automatically reviews your code in seconds!
-
+# Step 3 — Open PR on GitHub
+1. Go to github.com/Nitya-NP/prpilot
+2. Click "Compare & pull request"
+3. Click "Create pull request"
+4. Wait 10 seconds — bot posts review automatically!
 
 Built with by [Nitya Patel](https://github.com/Nitya-NP) - [LinkedIn](https://www.linkedin.com/in/nitya-patel-838072301/) | [Portfolio](https://nityapatel-portfolio.vercel.app/)
 
