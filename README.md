@@ -75,11 +75,25 @@ cp .env.example .env
 # Run the server
 uvicorn app.main:app --reload --port 8000
 ```
+## How to Get a Code Review
 
-## Environment Variables
-- GROQ_API_KEY=           # Free at console.groq.com
-- GITHUB_TOKEN=           # GitHub personal access token
-- GITHUB_WEBHOOK_SECRET=  # Random secret for webhook security
+Every time you want PRPilot to review your code:
+
+```bash
+# Step 1 — Create a new branch
+git checkout -b feature/your-feature-name
+
+# Step 2 — Write your code, then commit
+git add .
+git commit -m "describe what you built"
+git push origin feature/your-feature-name
+```
+
+# Step 3 — Open a PR on GitHub
+# Go to github.com/Nitya-NP/prpilot
+# Click "Compare & pull request"
+# Click "Create pull request"
+# PRPilot automatically reviews your code in seconds!
 
 
 Built with by [Nitya Patel](https://github.com/Nitya-NP) - [LinkedIn](https://www.linkedin.com/in/nitya-patel-838072301/) | [Portfolio](https://nityapatel-portfolio.vercel.app/)
