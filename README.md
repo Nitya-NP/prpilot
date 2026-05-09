@@ -5,7 +5,7 @@
 ![Groq](https://img.shields.io/badge/AI-Groq%20Llama3-orange)
 ![License](https://img.shields.io/badge/License-MIT-yellow)
 
-> AI-powered GitHub bot that automatically reviews pull requests using Llama3 via Groq. Opens a PR — get a structured code review in seconds.
+AI-powered GitHub bot that automatically reviews pull requests using Llama3 via Groq. Opens a PR — get a structured code review in seconds.
 
 ![PRPilot Demo](demo.gif)
 
