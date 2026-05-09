@@ -10,7 +10,6 @@ AI-powered GitHub bot that automatically reviews pull requests using Llama3 via 
 ![PRPilot Demo](demo.gif)
 
 ## Features
-
 - **Automatic code review** on every PR opened
 - **Bug detection** — spots common errors and issues
 - **Suggestions** — best practices and improvements
@@ -19,7 +18,6 @@ AI-powered GitHub bot that automatically reviews pull requests using Llama3 via 
 - **CI/CD** — runs via GitHub Actions automatically
 
 ## Tech Stack
-
 | Layer | Technology |
 |---|---|
 | AI Model | Llama3 via Groq API |
@@ -29,7 +27,6 @@ AI-powered GitHub bot that automatically reviews pull requests using Llama3 via 
 | Deployment | Render |
 
 ## How It Works
-
 1. Developer opens a pull request
 2. GitHub sends webhook event to PRPilot server
 3. PRPilot fetches the code diff via GitHub API
@@ -92,7 +89,7 @@ git push origin feature/your-feature-name
 1. Go to github.com/Nitya-NP/prpilot
 2. Click "Compare & pull request"
 3. Click "Create pull request"
-4. Wait 10 seconds — bot posts review automatically!
+4. Wait 10 seconds - bot posts review automatically!
 
 Built with by [Nitya Patel](https://github.com/Nitya-NP) - [LinkedIn](https://www.linkedin.com/in/nitya-patel-838072301/) | [Portfolio](https://nityapatel-portfolio.vercel.app/)
 
